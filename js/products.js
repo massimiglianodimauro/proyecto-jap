@@ -32,7 +32,13 @@ function showProductsList(array) {
                 <p class="mb-1">` +
       product.description +
       `</p>
+      <p class="font-weight-bold">` +
+      product.cost +
+      `` +
+      product.currency +
+      ` </p>
                 </div>
+                
             </div>
         </div>
         `;
