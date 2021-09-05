@@ -152,3 +152,14 @@ a.custom-card:hover {
   width: auto;
   height: auto;
 }
+#muestraUsuario {
+  color: white;
+  font-size: small;
+  text-align: right;
+}
+#userImage {
+  width: 25px;
+}
+#pestanaUsuario {
+  padding-right: 0px;
+}
