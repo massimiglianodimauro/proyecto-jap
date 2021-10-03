@@ -82,9 +82,9 @@ function showProductsList() {
         product.description +
         `</p>
     <p class="font-weight-bold">` +
-        product.cost +
-        `` +
         product.currency +
+        ` ` +
+        product.cost +
         ` </p>
               </div>
               

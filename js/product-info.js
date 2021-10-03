@@ -8,7 +8,7 @@ let monedaAuto = undefined;
 let cantidadVentas = undefined;
 let categoriasAuto = undefined;
 let imagenesAuto = [];
-let productosRelacionados = undefined;
+let productosRelacionados = [];
 
 function showInfoProduct() {
   let htmlContentToAppend = `<div class="list-group-item list-group-item-action">
@@ -53,7 +53,7 @@ function showInfoProduct() {
                       <small class="text-muted">${cantidadVentas} ventas</small>
                   </div>
                 <p class="mb-1">${descripcionAuto}</p>
-                <p class="font-weight-bold">${precioAuto} ${monedaAuto}</p>
+                <p class="font-weight-bold">${monedaAuto} ${precioAuto}</p>
     
         </div>
               
@@ -62,6 +62,30 @@ function showInfoProduct() {
 
   document.getElementById("productInfo").innerHTML = htmlContentToAppend;
 }
+function showRelatedProducts() {
+  let htmlContentToAppend = "";
+
+  for (let j = 0; j < productosRelacionados.length; j++) {
+    let relacionados = productosRelacionados[j];
+    relacionados = products[relacionados];
+
+    htmlContentToAppend += `
+      <a href="products.html" class="linkRelatedProducts" style="color: black">
+      <div class="card" style="width: 18rem; margin: 5px">
+      <img class="bd-placeholder-img card-img-top" src="${relacionados.imgSrc}">
+      <div class="card-body">
+      <h5 style="font-weight: bold;">${relacionados.name}</h5>
+      <p>${relacionados.currency} ${relacionados.cost}</p>
+      <small>${relacionados.soldCount} vendidos</small>
+      </div> 
+      </div>
+      </a>`;
+  }
+
+  document.getElementById("productosRelacionados").innerHTML =
+    htmlContentToAppend;
+}
+
 function showComents() {
   let htmlContentToAppend = "";
   for (let i = 0; i < infoComents.length; i++) {
@@ -116,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCTS_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       products = resultObj.data;
+      showRelatedProducts();
     }
   });
   document.getElementById("botonComentario").addEventListener("click", () => {

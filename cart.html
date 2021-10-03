@@ -40,10 +40,13 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div>
+      <div class="dropdown">
         <img src="img/iconouser.png" alt="" id="userImage">
-        <a class="navbar-text" id="muestraUsuario"></a>
+        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" aria-labelledby="muestraUsuario">
+            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
+          </div>
       </div>
     </div>
   </nav>
