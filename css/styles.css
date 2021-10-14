@@ -163,3 +163,59 @@ a.custom-card:hover {
 #pestanaUsuario {
   padding-right: 0px;
 }
+
+
+#carrito {
+  border: solid 2px green;
+  
+
+}
+#div1 {
+  border: solid skyblue;
+}
+#divTotal {
+  border: solid gold;
+  height: 5em;
+  text-align: right;
+}
+
+
+#contenedor1 {
+  border: solid red;
+}
+#imagenCarrito {
+  width: auto;
+  height: 10em;
+  
+}
+.imagenArticulo {
+  width: 15%;
+  border: solid 2px yellow;
+  float: left;
+}
+.infoArticulo {
+  width: 85%;
+  border: solid 1px violet;
+  float: left;
+  height: 10em;
+}
+.nombreProducto {
+  width: 100%;
+  float: left;
+}
+.precioUnit {
+  width: 20%;
+  text-align: center;
+}
+.cantidadArt {
+  width: 10%;
+  text-align: center;
+}
+.subTotal {
+  width: 10%;
+  text-align: center;
+}
+
+.miTabla {
+  padding-top: 3em;
+}

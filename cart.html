@@ -42,22 +42,34 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
         <img src="img/iconouser.png" alt="" id="userImage">
-        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-          <div class="dropdown-menu" aria-labelledby="muestraUsuario">
-            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
-          </div>
+        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="muestraUsuario">
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" href="index.html">Cerrar sesión</a>
+        </div>
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div id="contenedor1" class="container">
+    <div id="div1">
+      <h1 class="text-center p-3">Mi carrito</h1>
+      <h2 class="text-center p-3">Verás aquí todos los productos agregados al carrito.</h2>
     </div>
+
+    <div id="carrito" class="contenedorCarrito">
+
+    </div>
+    <div id="divTotal">
+      Total a pagar:
+      <br>
+      <button type="button" class="btn btn-primary">CHECKOUT</button>
+    </div>
+
+
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
