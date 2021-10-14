@@ -1,36 +1,38 @@
-let carrito = [];
+let infoCart = [];
+let monedaMostrada = true
+let cantidadArticulos = [];
+let subtotales = [];
 
 function showCart() {
   let htmlContentToAppend = "";
-  for (let i = 0; i < infoCart.articles.length; i++) {
-    let carrito = infoCart.articles[i];
+  for (let i = 0; i < infoCart.length; i++) {
+    let carrito = infoCart[i];
+  if (monedaMostrada === true) {
+  conversionADolares();
 
     htmlContentToAppend +=
-      `     
-    <div class="row">
-      <div class="imagenArticulo col-4">
-        <img src="${carrito.src}" class="img-thumbnail" id="imagenCarrito">
-      </div>
-      <div class="infoArticulo col-8">
-        <table class="table table-bordered miTabla">
-        <thead>
-        <tr>
-        
-          <th scope="col">Articulo</th>
-          <th scope="col">Precio unitario</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Subtotal</th>
-        </thead>
-        <tbody>
-        <tr>
-          <td class="nombreProducto">${carrito.name}</td>
-          <td class="precioUnit">${pesosADolares(carrito.unitCost)}</td>
-          <td class="cantidadArt">${carrito.count}</td>
-          <td class="subTotal">${subtotal(pesosADolares(carrito.unitCost),carrito.count)}</td>
-        </tr>
-        </tbody>
-        </div>
-    </div>`;
+    `         
+    <tr class="alturaFila">
+      <td class="imagenArticulo"> <img src="${carrito.src}" class="img-thumbnail" id="imagenCarrito"></td>
+      <td class="nombreProducto">${carrito.name}</td>
+      <td class="precioUnit">${carrito.currency} ${carrito.unitCost}</td>
+      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotal(); "></td>
+      <td class="subTotal">${cantidadArticulos[i]*parseInt(carrito.unitCost)}</td>
+    </tr>
+ `;
+} else {
+  conversionAPesos();
+  htmlContentToAppend +=
+    `         
+    <tr class="alturaFila">
+      <td class="imagenArticulo"> <img src="${carrito.src}" class="img-thumbnail" id="imagenCarrito"></td>
+      <td class="nombreProducto">${carrito.name}</td>
+      <td class="precioUnit">${carrito.currency} ${carrito.unitCost}</td>
+      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotal(); "></td>
+      <td class="subTotal">${cantidadArticulos[i]*parseInt(carrito.unitCost)}</td>
+    </tr>
+ `;
+}
 
     document.getElementById("carrito").innerHTML = htmlContentToAppend;
   }
@@ -40,17 +42,71 @@ function showCart() {
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CART_INFO2_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
-      infoCart = resultObj.data;
-
+      infoCart = resultObj.data.articles;
+      cantidadInicialArticulo();
       showCart();
+      subtotal();
     }
   });
+  document.getElementById("pesos").addEventListener("click",function () {
+    pesos();
+  })
+  document.getElementById("dolares").addEventListener("click",function () {
+    dolares();
+  })
+  
 });
-function pesosADolares(moneda) {
-  precioEnDolares = moneda / 40;
-  return precioEnDolares;
+
+function pesos() {
+  monedaMostrada = false;
+  showCart();
 }
-function subtotal(unitCost,cant) {
-  precioFinal = unitCost * cant;
-  return precioFinal;
+function dolares() {
+  monedaMostrada = true;
+  showCart();
+}
+
+function cantidadPorArticulos() {
+  let valores = document.getElementsByName("cantidad");
+  for (let i = 0; i < valores.length; i++) {
+    let cantidad = valores[i];
+    cantidadArticulos[i] = cantidad.value;
+  }
+  showCart();
+}
+
+function cantidadInicialArticulo() {
+  infoCart.forEach(i=>{
+    cantidadArticulos.push(i.count);
+  });
+}
+
+function subtotal() {
+  for (let i = 0; i < infoCart.length; i++) {
+    let articulos = infoCart[i];
+    let subtotalArticulo = parseInt(articulos.unitCost) * cantidadArticulos[i];
+    
+    document.getElementsByClassName("subTotal")[i].innerHTML = subtotalArticulo;
+  }
+  
+}
+ function conversionAPesos() {
+   for (let i = 0; i < infoCart.length; i++) {
+     let articulos = infoCart[i];
+     if (articulos.currency === "USD") {
+       articulos.currency = "UYU"; 
+       articulos.unitCost = articulos.unitCost * 40;
+     }
+    
+   }
+ }
+ function conversionADolares() {
+  for (let i = 0; i < infoCart.length; i++) {
+    let articulos = infoCart[i];
+    if (articulos.currency === "UYU") {
+      articulos.currency = "USD"; 
+      articulos.unitCost = articulos.unitCost / 40;
+    }
+   
+  }
 }

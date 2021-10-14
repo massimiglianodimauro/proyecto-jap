@@ -52,21 +52,48 @@
     </div>
   </nav>
 
-  <div id="contenedor1" class="container">
+  <div id="contenedor1" class="container p-5">
     <div id="div1">
       <h1 class="text-center p-3">Mi carrito</h1>
-      <h2 class="text-center p-3">Verás aquí todos los productos agregados al carrito.</h2>
-    </div>
-
-    <div id="carrito" class="contenedorCarrito">
-
-    </div>
-    <div id="divTotal">
-      Total a pagar:
       <br>
-      <button type="button" class="btn btn-primary">CHECKOUT</button>
+      <h3 class="text-center p-3">Productos agregados al carrito.</h3>
     </div>
+    <div class="row">
+      <div class="contenedorCarrito">
+        <div class="infoArticulo">
+          <table class="table table-bordered miTabla">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 30%;"></th>
+                <th scope="col" style="width: 30%;">Artículo</th>
+                <th scope="col" style="width: 10%;">Precio unitario</th>
+                <th scope="col" style="width: 10%;">Cantidad</th>
+                <th scope="col" style="width: 20%;">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="carrito">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="divTotal" class="row">
+        <div class="col">
+          <div class="row">
+            <button type="button" class="btn btn-primary" id="pesos">Pesos</button>
+            <button type="button" class="btn btn-primary" id="dolares">Dólares</button>
+          </div>
+        </div>
+        <div class="col">
 
+          Total a pagar:
+          <br>
+          <br>
+          <button type="button" class="btn btn-primary">Comprar</button>
+        </div>
+      </div>
+    </div>
 
   </div>
 
