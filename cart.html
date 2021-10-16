@@ -52,11 +52,11 @@
     </div>
   </nav>
 
-  <div id="contenedor1" class="container p-5">
+  <div class="container p-5">
     <div id="div1">
       <h1 class="text-center p-3">Mi carrito</h1>
       <br>
-      <h3 class="text-center p-3">Productos agregados al carrito.</h3>
+      <h4 class="text-center p-3">Aqui se encuentran todos los productos agregados al carrito.</h4>
     </div>
     <div class="row">
       <div class="contenedorCarrito">
@@ -64,8 +64,8 @@
           <table class="table table-bordered miTabla">
             <thead>
               <tr>
-                <th scope="col" style="width: 30%;"></th>
                 <th scope="col" style="width: 30%;">Artículo</th>
+                <th scope="col" style="width: 30%;">Descripción</th>
                 <th scope="col" style="width: 10%;">Precio unitario</th>
                 <th scope="col" style="width: 10%;">Cantidad</th>
                 <th scope="col" style="width: 20%;">Subtotal</th>
@@ -78,38 +78,91 @@
       </div>
     </div>
     <div>
-      <div id="divTotal" class="row">
+
+
+      <div id="divEnvio" class="row">
         <div class="col">
-          <div class="row">
-            <button type="button" class="btn btn-primary" id="pesos">Pesos</button>
-            <button type="button" class="btn btn-primary" id="dolares">Dólares</button>
+          <div>
+            <h4>Método de envío</h4>
+            <br>
+            <h5>Ingrese dirección de recepcion del envío:</h5>
+            <br>
+            <form>
+              <div class="form-group">
+                <label>Calle</label>
+                <input type="text" class="form-control">
+                <label>Número</label>
+                <input type="text" class="form-control">
+                <label>Esquina</label>
+                <input type="text" class="form-control">
+              </div>
+              <br>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Pais</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+
+                  <option value="1" id="listaPaises">Uruguay</option>
+                  <option value="2">Argentina</option>
+                  <option value="3">Brasil</option>
+                </select>
+              </div>
+              <br>
+              <div class="radio">
+                <h5>Tipo de envío:</h5>
+                <label><input type="radio" name="optradio" checked>Premium (2-5 dias) - Costo del 15% sobre el
+                  subtotal</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">Express (5-8 dias) - Costo del 7% sobre el subtotal</label>
+                <div class="radio">
+                  <label><input type="radio" name="optradio" checked>Standard (12-15 dias) - Costo del 5% sobre el
+                    subtotal</label>
+                </div>
+              </div>
+              <br>
+              <div class="radio">
+                <h5>Elige en que moneda realizar tu compra:</h5>
+                <br>
+                <label><input type="radio" name="optradio" checked id="pesos">Pesos (UYU)</label>
+                <div class="radio">
+                  <label><input type="radio" name="optradio" checked id="dolares">Dólares (USD)</label>
+                </div>
+              </div>
+
+
+
+            </form>
+            <div id="pago">
+
+              <p id="">Subtotal:</p>
+
+              <p>Total a pagar:</p>
+
+              <button type="button" class="btn btn-primary botonCompra">Comprar</button>
+            </div>
+
           </div>
         </div>
-        <div class="col">
 
-          Total a pagar:
-          <br>
-          <br>
-          <button type="button" class="btn btn-primary">Comprar</button>
-        </div>
+      </div>
+
+    </div>
+
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-
-  </div>
-
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
