@@ -40,6 +40,7 @@ function showCart() {
 
     }
     document.getElementById('totalAPagar').innerHTML = `Total a pagar: ${infoCart[0].currency} ${subtotal}`;
+    document.getElementById('subtotalAPagar').innerHTML = `Subtotal: ${infoCart[0].currency} ${subtotal}`;
 }
 
 
@@ -118,7 +119,5 @@ function conversionADolares() {
     }
 }
 
-function precioSubtotal(monto,cant) {
-  subtotal = monto * cant;
-return subtotal;
-}
+
+

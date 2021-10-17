@@ -13,7 +13,7 @@ const PRODUCT_INFO_COMMENTS_URL =
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 const CART_INFO2_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
-const COUNTRIES_LIST = "https://gist.github.com/Yizack/bbfce31e0217a3689c8d961a356cb10d.js";
+
 
 var showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";

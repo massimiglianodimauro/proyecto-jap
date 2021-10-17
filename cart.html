@@ -85,7 +85,7 @@
           <div>
             <h4>Método de envío</h4>
             <br>
-            <h5>Ingrese dirección de recepcion del envío:</h5>
+            <h5>Ingrese dirección de recepción del envío:</h5>
             <br>
             <form>
               <div class="form-group">
@@ -99,13 +99,21 @@
               <br>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Pais</label>
+                  <label class="input-group-text" for="inputGroupSelect01">Destino del envío</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
 
-                  <option value="1" id="listaPaises">Uruguay</option>
-                  <option value="2">Argentina</option>
+                  <option hidden>Seleccioná un país</option>
+                  <option value="1">Argentina</option>
+                  <option value="2">Bolivia</option>
                   <option value="3">Brasil</option>
+                  <option value="4">Chile</option>
+                  <option value="5">Colombia</option>
+                  <option value="6">Ecuador</option>
+                  <option value="7">Paraguay</option>
+                  <option value="8">Perú</option>
+                  <option value="9">Uruguay</option>
+                  <option value="10">Venezuela</option>
                 </select>
               </div>
               <br>
@@ -136,9 +144,11 @@
             </form>
             <div id="pago">
 
-              <p id="">Subtotal:</p>
+              <p id="subtotalAPagar" style="font: bold;"></p>
+              <p>Costo de envío:</p>
+              <p id="totalAPagar"></p>
 
-              <p>Total a pagar:</p>
+
 
               <button type="button" class="btn btn-primary botonCompra">Comprar</button>
             </div>
