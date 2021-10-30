@@ -18,3 +18,4 @@ function verificar() {
     localStorage.setItem("usuario", JSON.stringify(usuario));
   }
 }
+

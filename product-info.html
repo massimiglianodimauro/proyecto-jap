@@ -17,74 +17,97 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="principal.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown">
-        <img src="img/iconouser.png" alt="" id="userImage">
-        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-          <div class="dropdown-menu" aria-labelledby="muestraUsuario">
-            <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
-            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
-          </div>
-      </div>
+  <nav class="site-header sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+      aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="principal.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <img src="img/iconouser.png" alt="" id="userImage">
+      <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"></button>
+      <ul class="dropdown-menu" aria-labelledby="invitado">
+        <li><a class="dropdown-item" href="my-profile.html" id='profile'> Mi Perfil</a></li>
+        <li><a class="dropdown-item" href="cart.html" id='cart'> Mi Carrito </a></li>
+        <li><a class="dropdown-item" href="index.html" id='cerrarSesion' onclick="desconectar();"> Cerrar Sesión</a>
+        </li>
+      </ul>
     </div>
   </nav>
   <div class="container p-5"></div>
-      <div class="row justify-content-center">
-        <div class="container center pl-5 mt-5">
-          <div id="productInfo" class="list-group">
+  <div class="row justify-content-center">
+    <div class="container center pl-5 mt-5">
+      <div id="productInfo" class="list-group">
+      </div>
+      <div class="album py-5 justify-content-center" style="background-color: white;">
+        <div class="container">
+          <h4 style="text-align: center;">Productos relacionados:</h4>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex justify-content-center"
+            id="productosRelacionados" style="margin: 0px; padding: 0px;">
+
           </div>
-          <div class="album py-5 justify-content-center" style="background-color: white;">
-            <div class="container">
-                <h4 style="text-align: center;">Productos relacionados:</h4>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex justify-content-center" id="productosRelacionados" style="margin: 0px; padding: 0px;">
-
-                </div>
-            </div>
-        </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        
-       <div id="comentarios" class="container center pl-5 mt-5">
-
-      </div>
+    </div>
   </div>
-    <div class="row justify-content-center">
-      <div class="list-group col-6">
+  <div class="row justify-content-center">
+
+    <div id="comentarios" class="container center pl-5 mt-5">
+
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="list-group col-6">
       <div class="form-group" style="text-align: center;">
         <div class="form-check form-inline justify-content-center">
           <div id="nombreMiUsuario"></div>
-        <div class="puntuacion">
-          <input id="radio1" type="radio" name="estrellas" value="5" onclick="document.getElementById('valor').innerHTML='5'">
-          <label for="radio1">★</label>
-          <input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'">
-          <label for="radio2">★</label>
-          <input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'">
-          <label for="radio3">★</label>
-          <input id="radio4" type="radio" name="estrellas" value="2" onclick="document.getElementById('valor').innerHTML='2'">
-          <label for="radio4">★</label>
-          <input id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'">
-          <label for="radio5">★</label><br>
-          <span style="display: none;" id="valor"></span>
+          <div class="puntuacion">
+            <input id="radio1" type="radio" name="estrellas" value="5"
+              onclick="document.getElementById('valor').innerHTML='5'">
+            <label for="radio1">★</label>
+            <input id="radio2" type="radio" name="estrellas" value="4"
+              onclick="document.getElementById('valor').innerHTML='4'">
+            <label for="radio2">★</label>
+            <input id="radio3" type="radio" name="estrellas" value="3"
+              onclick="document.getElementById('valor').innerHTML='3'">
+            <label for="radio3">★</label>
+            <input id="radio4" type="radio" name="estrellas" value="2"
+              onclick="document.getElementById('valor').innerHTML='2'">
+            <label for="radio4">★</label>
+            <input id="radio5" type="radio" name="estrellas" value="1"
+              onclick="document.getElementById('valor').innerHTML='1'">
+            <label for="radio5">★</label><br>
+            <span style="display: none;" id="valor"></span>
 
+          </div>
+        </div>
+        <textarea name="publicarComentario" id="publicarComentario" cols="30" rows="5"
+          placeholder="Escribe un comentario..."></textarea>
+        <br>
+        <button id="botonComentario" class="btn btn-secondary">Enviar</button>
       </div>
-      </div>
-      <textarea name="publicarComentario" id="publicarComentario" cols="30" rows="5" placeholder="Escribe un comentario..."></textarea>
-      <br>
-      <button id="botonComentario" class="btn btn-secondary">Enviar</button>
-    </div>
     </div>
   </div>
-    
-  
 
-  
+
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

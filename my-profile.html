@@ -34,30 +34,115 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown">
-        <img src="img/iconouser.png" alt="" id="userImage">
-        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-          <div class="dropdown-menu" aria-labelledby="muestraUsuario">
-            <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
-            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
-          </div>
-      </div>
+  <nav class="site-header sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+      aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="principal.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <img src="img/iconouser.png" alt="" id="userImage">
+      <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"></button>
+      <ul class="dropdown-menu" aria-labelledby="invitado">
+        <li><a class="dropdown-item" href="cart.html" id='cart'> Mi Carrito </a></li>
+        <li><a class="dropdown-item" href="index.html" id='cerrarSesion' onclick="desconectar();"> Cerrar Sesión</a>
+        </li>
+      </ul>
     </div>
   </nav>
+
+
+
+
+
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="text-center p-4">
+      <h2>Mi perfil</h2>
+      <p class="lead">Ingresá tus datos.</p>
     </div>
+    <form>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="container" id="spanImagen">
+            <img src="" id="imagenPerfil" style="max-width: 80%; max-height: 80%;">
+          </div>
+          <br>
+          <span id="spanNombre"></span>
+          <br>
+          <span id="spanApellido"></span>
+          <br>
+          <span id="spanEmail"></span>
+          <br>
+          <span id="spanNacimiento"></span>
+          <br>
+          <span id="spanTelefono"></span>
+
+
+        </div>
+        <div class="col-sm-8">
+
+          <div class="form-row">
+
+            <div class="col">
+              <label for="inputNombre">Nombre</label>
+              <input type="text" class="form-control" placeholder="" id="inputNombre" required>
+            </div>
+            <div class="col">
+              <label for="inputApellido">Apellido</label>
+              <input type="text" class="form-control" placeholder="" id="inputApellido" required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="nombre@ejemplo.com" required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="inputEdad">Fecha de nacimiento</label>
+              <input type="date" class="form-control" id="inputEdad" placeholder="Seleccioná una fecha" required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="inputTelefono">Telefono de contacto</label>
+              <input type="tel" class="form-control" id="inputTelefono" placeholder="Ingresá tu teléfono" required>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="inputArchivoImagen">Elegí una foto de perfil</label>
+            <input type="file" class="form-control-file" id="inputArchivoImagen" onchange="previewFile();">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary mb-2" onclick="guardarCambios();">Guardar cambios</button>
+    </form>
+
   </div>
+
+  </div>
+  </div>
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>

@@ -48,9 +48,10 @@ var getJSONData = function (url) {
     });
 };
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+function desconectar() {
+  localStorage.clear();
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   if (localStorage.getItem("usuario")) {
     let mis_datos_json = localStorage.getItem("usuario");

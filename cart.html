@@ -34,21 +34,36 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="principal.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown">
-        <img src="img/iconouser.png" alt="" id="userImage">
-        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"></button>
-        <div class="dropdown-menu" aria-labelledby="muestraUsuario">
-          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-          <a class="dropdown-item" href="index.html">Cerrar sesión</a>
-        </div>
-      </div>
+  <nav class="site-header sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+      aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="principal.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="py-2 nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <img src="img/iconouser.png" alt="" id="userImage">
+      <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="muestraUsuario" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"></button>
+      <ul class="dropdown-menu" aria-labelledby="invitado">
+        <li><a class="dropdown-item" href="my-profile.html" id='profile'> Mi Perfil</a></li>
+        <li><a class="dropdown-item" href="index.html" id='cerrarSesion' onclick="desconectar();"> Cerrar Sesión</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
@@ -119,7 +134,7 @@
               <br>
               <div class="radio">
                 <h5>Tipo de envío:</h5>
-                <label><input type="radio" name="optradio" checked>Premium (2-5 dias) - Costo del 15% sobre el
+                <label><input type="radio" name="optradio">Premium (2-5 dias) - Costo del 15% sobre el
                   subtotal</label>
               </div>
               <div class="radio">
@@ -134,7 +149,7 @@
             <div class="radio">
               <h5>Elige en que moneda realizar tu compra:</h5>
               <br>
-              <label><input type="radio" name="optradio" checked id="pesos">Pesos (UYU)</label>
+              <label><input type="radio" name="optradio" id="pesos">Pesos (UYU)</label>
               <div class="radio">
                 <label><input type="radio" name="optradio" checked id="dolares">Dólares (USD)</label>
               </div>

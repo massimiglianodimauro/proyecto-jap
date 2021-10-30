@@ -58,42 +58,33 @@ function showProductsList() {
         (maxCount != undefined && parseInt(product.cost) <= maxCount))
     ) {
       htmlContentToAppend +=
+      
         `
-      <a href="product-info.html" class="list-group-item list-group-item-action">
-          <div class="row">
-              <div class="col-3">
-                  <img src="` +
-        product.imgSrc +
-        `" alt="` +
-        product.description +
-        `" class="img-thumbnail">
-              </div>
-              <div class="col">
-                  <div class="d-flex w-100 justify-content-between">
-                      <h4 class="mb-1">` +
-        product.name +
-        `</h4>
+        <a href="product-info.html" class="productInfoLink" style="color: black;">
+                <div class="card" style="width: 22rem; margin: 5px; height: 100%;">
+                                       
+                                      <img src="${product.imgSrc}" class="bd-placeholder-img card-img-top" width="302" height="225">
+                                      <div class="card-body">
+                                      <div class="row">
+                                      <div class="col col-7">                                                                           
+                                      <h4 class="card-text">${product.name}</h4>
+                                      </div>
+                                      <div class="col col-5">                                      
+                                      <small class="card-text text-right">${product.soldCount} articulos vendidos</small>
+                                      </div></div><br>
+                                      <h2 style="text-weight: bold;"> ${product.currency} ${product.cost}</h2> 
+                                      <br>
+                                      <p class="card-text">${product.description}<p>                                                                                                                                      
+                                      </div>
+                                      
+                                      </div>
+                                      </a>`;
+
+      
     
-                      <small class="text-muted">` +
-        product.soldCount +
-        ` ventas</small>
-                  </div>
-              <p class="mb-1">` +
-        product.description +
-        `</p>
-    <p class="font-weight-bold">` +
-        product.currency +
-        ` ` +
-        product.cost +
-        ` </p>
-              </div>
-              
-          </div>
-      </a>
-      `;
     }
 
-    document.getElementById("cat-list-container").innerHTML =
+    document.getElementById("album-list-container").innerHTML =
       htmlContentToAppend;
   }
 }
