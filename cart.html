@@ -11,6 +11,7 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     .bd-placeholder-img {
@@ -48,14 +49,18 @@
           <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
           <div class="tabs mt-3">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab"
-                  href="#tarjetaDeCredito" role="tab" aria-controls="visa" aria-selected="true">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#tarjetaDeCredito" role="tab"
+                  aria-controls="visa" aria-selected="true">
                   <h5>Tarjeta de crédito</h5>
-                </a> </li>
-              <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
-                  href="#transferencia" role="tab" aria-controls="paypal" aria-selected="false">
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#transferencia" role="tab"
+                  aria-controls="paypal" aria-selected="false">
                   <h5>Transferencia bancaria</h5>
-                </a> </li>
+                </a>
+              </li>
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="tarjetaDeCredito" role="tabpanel" aria-labelledby="visa-tab">
@@ -189,23 +194,26 @@
             <br>
             <h5>Ingrese dirección de recepción del envío:</h5>
             <br>
-            <form>
+            <form id="direccionEnvio">
               <div class="form-group">
                 <label>Calle</label>
                 <input type="text" class="form-control" required>
+                <span class="invalid-feedback">Por favor ingrese su Calle</span>
                 <label>Número</label>
-                <input type="text" class="form-control">
+                <input type="number" class="form-control" required>
+                <span class="invalid-feedback">Por favor ingrese número de calle</span>
                 <label>Esquina</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" required>
+                <span class="invalid-feedback">Por favor ingrese su esquina</span>
               </div>
               <br>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Destino del envío:</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" required>
 
-                  <option hidden>Seleccioná un país</option>
+                  <option value="" disabled selected>Seleccioná un país</option>
                   <option value="1">Argentina</option>
                   <option value="2">Bolivia</option>
                   <option value="3">Brasil</option>
@@ -263,7 +271,7 @@
 
 
 
-              <button type="button" class="btn btn-primary botonCompra" type="submit">Comprar</button>
+              <button type="button" class="btn btn-primary botonCompra" type="submit" id="botonCompra">Comprar</button>
             </div>
 
           </div>

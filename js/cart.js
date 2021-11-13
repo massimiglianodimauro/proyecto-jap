@@ -1,57 +1,61 @@
 let infoCart = [];
 let monedaMostrada = true
 let cantidadArticulos = [];
-let subtotalSinEnvio = 0;
+let subtotal = 0;
 
 function showCart() {
     let htmlContentToAppend = "";
-    let subtotal = 0;
-    subtotalSinEnvio = 0;
-    for (let i = 0; i < infoCart.length; i++) {
-        let carrito = infoCart[i];
-        if (monedaMostrada === true) {
-            conversionADolares();
-            subtotal += cantidadArticulos[i] * parseFloat(carrito.unitCost);
-            subtotalSinEnvio = subtotal;
-            htmlContentToAppend +=
-                `         
+    subtotal = 0;
+    if (infoCart.length > 0) {
+        for (let i = 0; i < infoCart.length; i++) {
+            let carrito = infoCart[i];
+            if (monedaMostrada === true) {
+                conversionADolares();
+                subtotal += cantidadArticulos[i] * parseFloat(carrito.unitCost);
+
+                htmlContentToAppend +=
+                    `         
     <tr class="alturaFila">
       <td class="imagenArticulo"> <img src="${carrito.src}" class="img-thumbnail" id="imagenCarrito"></td>
       <td class="nombreProducto">${carrito.name}</td>
       <td class="precioUnit">${carrito.currency} ${carrito.unitCost}</td>
-      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotal(); "></td>
+      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotalArticulo(); calcularEnvio(); "></td>
       <td class="subTotal">${carrito.currency} ${cantidadArticulos[i]*parseFloat(carrito.unitCost)}</td>
-      <td> <button class="removeCartItem" onclick="deleteCartItem(${i});">algo</button></td>
+      <td> <button type="button" class="removeCartItem btn btn-light" onclick="deleteCartItem(${i});"><i style="font-size:24px" class="fa">&#xf014;</i></button></td>
     </tr>
  `;
-    document.getElementById('totalAPagar').innerHTML = `Total a pagar: USD ${subtotal}`;
-    document.getElementById('subtotalAPagar').innerHTML = `Subtotal: USD ${subtotal}`;
 
-        } else {
-            conversionAPesos();
+                document.getElementById('subtotalAPagar').innerHTML = `Subtotal: USD ${subtotal}`;
 
-            subtotal += cantidadArticulos[i] * parseFloat(carrito.unitCost);
-            subtotalSinEnvio = subtotal;
-            htmlContentToAppend +=
-                `         
+            } else {
+                conversionAPesos();
+
+                subtotal += cantidadArticulos[i] * parseFloat(carrito.unitCost);
+
+                htmlContentToAppend +=
+                    `         
     <tr class="alturaFila">
       <td class="imagenArticulo"> <img src="${carrito.src}" class="img-thumbnail" id="imagenCarrito"></td>
       <td class="nombreProducto">${carrito.name}</td>
       <td class="precioUnit">${carrito.currency} ${parseFloat(carrito.unitCost)}</td>
-      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotal(); "></td>
+      <td class="cantidadArt"><input min="1" type="number" name="cantidad" value="${cantidadArticulos[i]}" onchange="cantidadPorArticulos(); subtotalArticulo(); calcularEnvio(); "></td>
       <td class="subTotal">${carrito.currency} ${cantidadArticulos[i]*parseFloat(carrito.unitCost)}</td>
-      <td> <div class="removeCartItem" onclick="deleteCartItem(${i});"><i class="fa fas-trash"></i></div></td>
+      <td><button type="button" class="removeCartItem btn btn-light" onclick="deleteCartItem(${i});"><i style="font-size:24px" class="fa">&#xf014;</i></button></td>
     </tr>
  `;
-    document.getElementById('totalAPagar').innerHTML = `Total a pagar: UYU ${subtotal}`;
-    document.getElementById('subtotalAPagar').innerHTML = `Subtotal: UYU ${subtotal}`;
+
+                document.getElementById('subtotalAPagar').innerHTML = `Subtotal: UYU ${subtotal}`;
+            }
+
+            document.getElementById("carrito").innerHTML = htmlContentToAppend;
+
         }
-
-        document.getElementById("carrito").innerHTML = htmlContentToAppend;
-
+    } else {
+        document.getElementById("carrito").innerHTML = '<tr>No hay articulos en el carrito</tr>';
+        document.getElementById('subtotalAPagar').innerHTML = 'Subtotal: 0';
     }
-    calcularEnvio();
-    
+
+
 }
 
 
@@ -61,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             infoCart = resultObj.data.articles;
             cantidadInicialArticulo();
             showCart();
-            subtotal();
             calcularEnvio();
         }
     });
@@ -71,19 +74,27 @@ document.addEventListener("DOMContentLoaded", function(e) {
     document.getElementById("dolares").addEventListener("click", function() {
         dolares();
     })
-    document.getElementsByName("optEnvio").forEach(i=>{i.addEventListener("change", function() {
-        calcularEnvio();
-    })})
+    document.getElementsByName("optEnvio").forEach(i => {
+        i.addEventListener("change", function() {
+            showCart();
+            calcularEnvio();
+        })
+    })
+    document.getElementById('botonCompra').addEventListener('click', function() {
+        validar();
+    })
 });
 
 function pesos() {
     monedaMostrada = false;
     showCart();
+    calcularEnvio();
 }
 
 function dolares() {
     monedaMostrada = true;
     showCart();
+    calcularEnvio();
 }
 
 function cantidadPorArticulos() {
@@ -101,14 +112,15 @@ function cantidadInicialArticulo() {
     });
 }
 
-function subtotal() {
+function subtotalArticulo() {
     for (let i = 0; i < infoCart.length; i++) {
         let articulos = infoCart[i];
-        let subtotalArticulo = parseFloat(articulos.unitCost) * cantidadArticulos[i];
-        subtotalSinEnvio += subtotalArticulo;
+        let subtotalPorArticulo = parseFloat(articulos.unitCost) * cantidadArticulos[i];
 
-        document.getElementsByClassName("subTotal")[i].innerHTML = `${articulos.currency} ${subtotalArticulo}`;
+
+        document.getElementsByClassName("subTotal")[i].innerHTML = `${articulos.currency} ${subtotalPorArticulo}`;
     }
+
 
 }
 
@@ -149,8 +161,9 @@ function validarTarjeta() {
         metodoDePagoInfo.cvvTarjeta = document.getElementById("cvvTarjeta");
         document.getElementById("formaSeleccionada").innerHTML = "Forma de pago seleccionado " + metodoDePagoInfo.opcion;
 
-        }
+    }
 }
+
 function validarTransferencia() {
     let formularioTransferencia = document.getElementById("transferenciaBancaria");
     formularioTransferencia.classList.add("was-validated");
@@ -159,10 +172,10 @@ function validarTransferencia() {
         metodoDePagoInfo.nombreBanco = document.getElementById("nombreBanco");
         metodoDePagoInfo.nombreTitularCuenta = document.getElementById("nombreTitularCuenta");
         metodoDePagoInfo.numeroCuenta = document.getElementById("numeroCuenta");
-        
+
         document.getElementById("formaSeleccionada").innerHTML = "Forma de pago seleccionado " + metodoDePagoInfo.opcion;
-        
-        }
+
+    }
 }
 
 /*Opciones de envio*/
@@ -172,22 +185,40 @@ function calcularEnvio() {
     let tiposDeEnvios = document.getElementsByName("optEnvio");
     for (let i = 0; i < tiposDeEnvios.length; i++) {
         const opcionEnvio = tiposDeEnvios[i];
-     if (opcionEnvio.checked) {
-         let porcentajeEnvio = parseFloat(opcionEnvio.value);
-        costoEnvio = (porcentajeEnvio*subtotalSinEnvio).toFixed(2);
-     }   
-    } if (monedaMostrada) {
-        document.getElementById("costoEnvio").innerHTML = "Costo de envio: USD " + costoEnvio;
-    } else {
-       document.getElementById("costoEnvio").innerHTML = "Costo de envio: UYU " + costoEnvio; 
+        if (opcionEnvio.checked) {
+            let porcentajeEnvio = parseFloat(opcionEnvio.value);
+            costoEnvio = (porcentajeEnvio * subtotal).toFixed(2);
+        }
     }
-     
+    if (monedaMostrada) {
+        document.getElementById("costoEnvio").innerHTML = "Costo de envio: USD " + costoEnvio;
+        document.getElementById('totalAPagar').innerHTML = `Total a pagar: USD ${subtotal + Number(costoEnvio)} `;
+    } else {
+        document.getElementById("costoEnvio").innerHTML = "Costo de envio: UYU " + costoEnvio;
+        document.getElementById('totalAPagar').innerHTML = `Total a pagar: UYU ${subtotal + Number(costoEnvio)}`;
+    }
+
 }
 
 /*Borrar item de carrito*/
 const deleteCartItem = (e) => {
-
     infoCart.splice(e, 1);
     cantidadArticulos.splice(e, 1);
+
     showCart();
+    calcularEnvio();
+}
+
+/*Validar*/
+function validar() {
+    let formularioDireccionEnvio = document.getElementById('direccionEnvio');
+    formularioDireccionEnvio.classList.add('was-validated');
+    if (formularioDireccionEnvio.checkValidity() && metodoDePagoInfo.opcion !== undefined) {
+        alert('¡Compra realizada con exito!');
+        formularioDireccionEnvio.classList.remove('was-validated');
+    } else if (metodoDePagoInfo.opcion === undefined) {
+        alert('Falta seleccionar método de pago');
+    } else if (!formularioDireccionEnvio.checkValidity()) {
+        alert('ingrese correctamente su dirección')
+    }
 }

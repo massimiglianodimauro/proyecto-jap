@@ -180,7 +180,7 @@ a.custom-card:hover {
 
 
 #divEnvio {
-  border: solid grey;
+  border: solid rgb(206, 205, 205) 0.01em;
   padding: 2em;
 }
 
