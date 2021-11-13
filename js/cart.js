@@ -159,7 +159,7 @@ function validarTarjeta() {
         metodoDePagoInfo.numeroTarjeta = document.getElementById("numeroTarjeta");
         metodoDePagoInfo.vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
         metodoDePagoInfo.cvvTarjeta = document.getElementById("cvvTarjeta");
-        document.getElementById("formaSeleccionada").innerHTML = "Forma de pago seleccionado " + metodoDePagoInfo.opcion;
+        document.getElementById("formaSeleccionada").innerHTML = "Opción: " + metodoDePagoInfo.opcion;
 
     }
 }
@@ -173,7 +173,7 @@ function validarTransferencia() {
         metodoDePagoInfo.nombreTitularCuenta = document.getElementById("nombreTitularCuenta");
         metodoDePagoInfo.numeroCuenta = document.getElementById("numeroCuenta");
 
-        document.getElementById("formaSeleccionada").innerHTML = "Forma de pago seleccionado " + metodoDePagoInfo.opcion;
+        document.getElementById("formaSeleccionada").innerHTML = "Opción: " + metodoDePagoInfo.opcion;
 
     }
 }
